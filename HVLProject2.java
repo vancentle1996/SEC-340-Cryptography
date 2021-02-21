@@ -2,28 +2,34 @@
 ** Class : SEC 340 Cryptography 
 ** Instructor : Dr. Bai
 ** Author : Hai Le
+** Assignment : Project 2
 ** Due Date : Feb 25th, 2021
 ***************************************/
 
 import java.util.Scanner; 
 import java.util.*;
 
-
-/* This program will encrypt and decrypt a message using Caesar cipher algorithm*/
+/* This program will encrypt and decrypt 
+a message using Caesar cipher algorithm*/
 public class HVLProject2 
 { 
    
-   /* This method accepts 2 string arguments, one is the plaintext itself,
-    * the other argument is the key value */
+   /* This method accepts 2 arguments:
+    * 1. Plaintext (string)
+    * 2. A key (or offset as an integer) 
+    * It encrypts the input message according to an input key
+    * Then display the ciphered string reprresentation of the plaintext*/
    static String cipher(String inputMsg, int offset) 
    {
       String encryptedText = "";
       char ch;
       
-      /* Encryption starts */
+      // Encryption starts
       for(int i = 0; i < inputMsg.length(); ++i){
       
-			ch = inputMsg.charAt(i); // Loop through each character in the plaintext string - results are ASCII values
+         // Loop through each character in the plaintext string 
+         // results are ASCII values
+			ch = inputMsg.charAt(i); 
 			
          // Checks if a character in the plaintext string a lower-case letter
 			if(ch >= 'a' && ch <= 'z'){
@@ -38,9 +44,10 @@ public class HVLProject2
 	            if(ch > 'z'){
 	                ch = (char)(ch - 'z' + 'a' - 1);
 	            }
-	            
+               
 	            encryptedText += ch;
 	        }
+           
            // This does the same thing as the if statement above, 
            // but it is for upper-case letters
 	        else if(ch >= 'A' && ch <= 'Z'){
@@ -52,27 +59,34 @@ public class HVLProject2
 	            
 	            encryptedText += ch;
 	        }
+           
+           // Handles other character, like the dot (.) in the sample
 	        else {
-	        	encryptedText += ch; // Handles other character, like the dot (.) in the sample
+	        	encryptedText += ch; 
 	        }
 		}
+      
       return encryptedText;
       
    }
    
-   /* This method has a very similar algorithm as the cipher() method,
-    * it is just backwards and a little more math */
+   /* This method accepts 2 arguments:
+    * 1. A ciphered string 
+    * 2. A key (or offset as an integer) 
+    * It decrypts the input ciphered message according to an input key
+    * Then display the plaintext reprresentation of the ciphered text*/
    static String decipher(String inputMsg, int offset) 
    {
    
       String decryptedText = "";
       char ch;
       
-      /* Decryption starts */
+      // Decryption starts
       for(int i = 0; i < inputMsg.length(); ++i){
-      
-			ch = inputMsg.charAt(i); // Loop through each character in the ciphered string - results are ASCII values
-			
+         
+         // Loop through each character in the ciphered string - results are ASCII values
+			ch = inputMsg.charAt(i); 			
+         
          // Checks if a character in the ciphered string a lower-case letter
 			if(ch >= 'a' && ch <= 'z'){
          
@@ -99,8 +113,10 @@ public class HVLProject2
 	            
 	            decryptedText += ch;
 	        }
+           
+           // Handles other character, like the dot (.) in the sample
 	        else {
-	        	decryptedText += ch; // Handles other characters such as a dot in the sample
+	        	decryptedText += ch; 
 	        }
 		}
       return decryptedText;
@@ -116,6 +132,8 @@ public class HVLProject2
       String yesOrNo = "y";
       final int offset = 3;
       
+      // Keep asking if the user wants to continue the process
+      // until "n" is entered to stop the program
       while (yesOrNo.equals("y"))
       {
          int choice = 0;
@@ -141,7 +159,7 @@ public class HVLProject2
             String ciphertext = sc.nextLine();
             System.out.println();
 
-            System.out.println("The plainttext (with an offset of 3) is: ");
+            System.out.println("The plaintext (with an offset of 3) is: ");
             System.out.println(decipher(ciphertext, offset).toString());
             
          }

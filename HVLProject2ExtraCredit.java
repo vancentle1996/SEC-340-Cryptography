@@ -2,6 +2,7 @@
 ** Class : SEC 340 Cryptography 
 ** Instructor : Dr. Bai
 ** Author : Hai Le
+** Assignment : Project 2 (EXTRA CREDIT)
 ** Due Date : Feb 25th, 2021
 ***************************************/
 
@@ -12,22 +13,25 @@ import java.util.*;
 /* This program will encrypt and decrypt a message using Caesar cipher algorithm*/
 public class HVLProject2ExtraCredit
 { 
-   /* This method accepts 2 string arguments, one is the plaintext itself,
-    * the other argument is the key value */
+   /* This method accepts 2 arguments:
+    * 1. Plaintext (string)
+    * 2. A key (or offset as a string) 
+    * It encrypts the input message according to an input key
+    * Then display the ciphered string reprresentation of the plaintext*/
    static String cipher(String inputMsg, String offset) 
    {
       String encryptedText = "";
       char ch;
       char offsetChar;
       
-      /* Encryption starts */
+      // Encryption starts 
       for(int i = 0; i < inputMsg.length(); ++i){
          
          // Loop and convert
-         ch = inputMsg.charAt(i); // Loop through each character in the plaintext string - results are ASCII values
-         offsetChar = offset.charAt(i); // Loop through each number (in form of string) in the key value
+         ch = inputMsg.charAt(i);                               // Loop through each character in the plaintext string - results are ASCII values
+         offsetChar = offset.charAt(i);                         // Loop through each number (in form of string) in the key value
          int offsetInt = Character.getNumericValue(offsetChar); // Convert each string representation of a number in the key to an integer
-      	
+         
          // Checks if a character in the plaintext string a lower-case letter
          if(ch >= 'a' && ch <= 'z'){
          
@@ -55,16 +59,21 @@ public class HVLProject2ExtraCredit
                
             encryptedText += ch;
          }
+         
+         // Handles other character, like the dot (.) in the sample
          else {
-            encryptedText += ch; // Handles other character, like the dot (.) in the sample
+            encryptedText += ch; 
          }
       }
       return encryptedText;
       
    }
    
-   /* This method has a very similar algorithm as the cipher() method,
-    * it is just backwards and a little more math */
+   /* This method accepts 2 arguments:
+    * 1. A ciphered string 
+    * 2. A key (or offset as a string) 
+    * It decrypts the input ciphered message according to an input key
+    * Then display the plaintext reprresentation of the ciphered text*/
    static String decipher(String inputMsg, String offset) 
    {
       
@@ -72,12 +81,12 @@ public class HVLProject2ExtraCredit
       char ch;
       char offsetChar;
    
-      /* Decryption starts */
+      // Decryption starts
       for(int i = 0; i < inputMsg.length(); ++i){
       
          // Loop and convert 
-         ch = inputMsg.charAt(i); // Loop through each character in the ciphered string - results are ASCII values
-         offsetChar = offset.charAt(i); // Loop through each number (in form of string) in the key value
+         ch = inputMsg.charAt(i);                               // Loop through each character in the ciphered string - results are ASCII values
+         offsetChar = offset.charAt(i);                         // Loop through each number (in form of string) in the key value
          int offsetInt = Character.getNumericValue(offsetChar); // Convert each string representation of a number in the key to an integer
          
          // Checks if a character in the ciphered string a lower-case letter
@@ -107,8 +116,10 @@ public class HVLProject2ExtraCredit
                
             decryptedText += ch;
          }
+         
+         // Handles other character, like the dot (.) in the sample
          else {
-            decryptedText += ch; // Handles other characters such as a dot in the sample
+            decryptedText += ch;
          }
       }
       return decryptedText;
@@ -122,8 +133,9 @@ public class HVLProject2ExtraCredit
       
       //Variable initialization
       String yesOrNo = "y";
-      final int offset = 3;
       
+      // Keep asking if the user wants to continue the process
+      // until "n" is entered to stop the program
       while (yesOrNo.equals("y"))
       {
          int choice = 0;
@@ -145,7 +157,7 @@ public class HVLProject2ExtraCredit
             System.out.println();
 
             
-            System.out.println("The ciphertext (with an offset of 3) is: ");
+            System.out.println("The ciphertext (with an offset of " + key + ") is: ");
             System.out.println(cipher(plaintext, key).toString());
          }
          
@@ -160,7 +172,7 @@ public class HVLProject2ExtraCredit
             
             System.out.println();
          
-            System.out.println("The plainttext (with an offset of 3) is: ");
+            System.out.println("The plaintext (with an offset of " + key + ") is: ");
             System.out.println(decipher(ciphertext, key).toString());
             
          }

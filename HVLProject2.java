@@ -29,42 +29,42 @@ public class HVLProject2
       
          // Loop through each character in the plaintext string 
          // results are ASCII values
-			ch = inputMsg.charAt(i); 
-			
+         ch = inputMsg.charAt(i); 
+      	
          // Checks if a character in the plaintext string a lower-case letter
-			if(ch >= 'a' && ch <= 'z'){
+         if(ch >= 'a' && ch <= 'z'){
                
-               // If it is a lower case letter, shift forward to the appropriate 
-               // place in the alphabet depends on the offset value
-	            ch = (char)(ch + offset);
-	            
-               // This block is used to make sure that we don't
-               // go over z, if a character is greater than lower-case z, 
-               // we go back to lower-case a
-	            if(ch > 'z'){
-	                ch = (char)(ch - 'z' + 'a' - 1);
-	            }
+            // If it is a lower case letter, shift forward to the appropriate 
+            // place in the alphabet depends on the offset value
+            ch = (char)(ch + offset);
                
-	            encryptedText += ch;
-	        }
+            // This block is used to make sure that we don't
+            // go over z, if a character is greater than lower-case z, 
+            // we go back to lower-case a
+            if(ch > 'z'){
+               ch = (char)(ch - 'z' + 'a' - 1);
+            }
+               
+            encryptedText += ch;
+         }
            
-           // This does the same thing as the if statement above, 
-           // but it is for upper-case letters
-	        else if(ch >= 'A' && ch <= 'Z'){
-	            ch = (char)(ch + offset);
-	            
-	            if(ch > 'Z'){
-	                ch = (char)(ch - 'Z' + 'A' - 1);
-	            }
-	            
-	            encryptedText += ch;
-	        }
+         // This does the same thing as the if statement above, 
+         // but it is for upper-case letters
+         else if(ch >= 'A' && ch <= 'Z'){
+            ch = (char)(ch + offset);
+               
+            if(ch > 'Z'){
+               ch = (char)(ch - 'Z' + 'A' - 1);
+            }
+               
+            encryptedText += ch;
+         }
            
-           // Handles other character, like the dot (.) in the sample
-	        else {
-	        	encryptedText += ch; 
-	        }
-		}
+         // Handles other character, like the dot (.) in the sample
+         else {
+            encryptedText += ch; 
+         }
+      }
       
       return encryptedText;
       
@@ -85,42 +85,42 @@ public class HVLProject2
       for(int i = 0; i < inputMsg.length(); ++i){
          
          // Loop through each character in the ciphered string - results are ASCII values
-			ch = inputMsg.charAt(i); 			
+         ch = inputMsg.charAt(i); 			
          
          // Checks if a character in the ciphered string a lower-case letter
-			if(ch >= 'a' && ch <= 'z'){
+         if(ch >= 'a' && ch <= 'z'){
          
-               // If it is a lower case letter, shift backward to the appropriate 
-               // place in the alphabet depends on the offset value
-	            ch = (char)(ch - offset);
-	            
-               // Make sure we don't go over z
-	            if(ch < 'a'){
-	                ch = (char)(ch + 'z' - 'a' + 1);
-	            }
-	            
-	            decryptedText += ch;
-	        }
+            // If it is a lower case letter, shift backward to the appropriate 
+            // place in the alphabet depends on the offset value
+            ch = (char)(ch - offset);
+               
+            // Make sure we don't go over z
+            if(ch < 'a'){
+               ch = (char)(ch + 'z' - 'a' + 1);
+            }
+               
+            decryptedText += ch;
+         }
            
-           // This does the same thing as the if statement above, 
-           // but it is for upper-case letters
-	        else if(ch >= 'A' && ch <= 'Z'){
-	            ch = (char)(ch - offset);
-	            
-	            if(ch < 'A'){
-	                ch = (char)(ch + 'Z' - 'A' + 1);
-	            }
-	            
-	            decryptedText += ch;
-	        }
+         // This does the same thing as the if statement above, 
+         // but it is for upper-case letters
+         else if(ch >= 'A' && ch <= 'Z'){
+            ch = (char)(ch - offset);
+               
+            if(ch < 'A'){
+               ch = (char)(ch + 'Z' - 'A' + 1);
+            }
+               
+            decryptedText += ch;
+         }
            
-           // Handles other character, like the dot (.) in the sample
-	        else {
-	        	decryptedText += ch; 
-	        }
-		}
+         // Handles other character, like the dot (.) in the sample
+         else {
+            decryptedText += ch; 
+         }
+      }
       return decryptedText;
-
+   
    }
 
  
@@ -158,7 +158,7 @@ public class HVLProject2
             System.out.println("Please enter the ciphertext you wish to decrypt: ");
             String ciphertext = sc.nextLine();
             System.out.println();
-
+         
             System.out.println("The plaintext (with an offset of 3) is: ");
             System.out.println(decipher(ciphertext, offset).toString());
             
